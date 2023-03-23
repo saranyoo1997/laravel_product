@@ -383,6 +383,7 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
+                                
                                 <a class="dropdown-item" href="#" data-toggle="modal"
                                     data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -456,7 +457,10 @@
     <script src="vendor/chart.js/Chart.min.js"></script>
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script> --}}
-    @vite(['resources/theme/vendor/jquery/jquery.js', 'resources/theme/vendor/bootstrap/js/bootstrap.bundle.js', 'resources/theme/vendor/jquery-easing/jquery.easing.js', 'resources/theme/js/sb-admin-2.js', 'resources/theme/vendor/chart.js/Chart.js', 'resources/theme/js/demo/chart-area-demo.js', 'resources/theme/js/demo/chart-pie-demo.js'])
+    @vite(['resources/theme/vendor/jquery/jquery.js', 'resources/theme/vendor/bootstrap/js/bootstrap.bundle.js', 'resources/theme/vendor/jquery-easing/jquery.easing.js', 'resources/theme/js/sb-admin-2.js', 'resources/theme/vendor/chart.js/Chart.js', 'resources/theme/js/demo/chart-area-demo.js', 
+    'resources/theme/js/demo/chart-pie-demo.js',
+    'resources/js/sweetalert.js'
+    ])
 
 </body>
 

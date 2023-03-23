@@ -1,5 +1,4 @@
 @extends('layout.blank')
-
 @section('content')
     <div class="container">
 
@@ -16,36 +15,32 @@
                             <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Register!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome!</h1>
                                     </div>
-
-                                    <form action="{{ route('register.store') }}" method="post" class="user">
+                                    <form action="{{route('login')}}" method="post" class="user">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="text" name="name" value="{{ old('name') }}"
-                                                class="form-control form-control-user" id="name"
-                                                aria-describedby="emailHelp" placeholder="Firstname...">
+                                            <input type="text" name="username" value="{{ old('username') }}" class="form-control form-control-user"
+                                           
+                                                placeholder="Enter Username...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" value="{{ old('username') }}" name="username"
-                                                class="form-control form-control-user" id="username"
-                                                placeholder="Username">
+                                            <input type="password" name="password" value="{{ old('password') }}" class="form-control form-control-user"
+                                               placeholder="Enter Password">
                                         </div>
-                                        <div class="form-group">
-                                            <input type="password" value="{{ old('password') }}"
-                                                class="form-control form-control-user" id="password" name="password"
-                                                placeholder="Password">
-                                        </div>
-
-                                        <center><button type="submit" class="btn btn-primary">Submit</button></center>
+                                        
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                            Login
+                                        </button>
                                         <hr>
-
 
                                     </form>
                                     <hr>
-
+                                    {{-- <div class="text-center">
+                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                </div> --}}
                                     <div class="text-center">
-                                        <a class="small" href="{{ route('login') }}">Already have an account? Login!</a>
+                                        <a class="small" href="{{ route('register.index') }}">Create an Account!</a>
                                     </div>
                                 </div>
                             </div>

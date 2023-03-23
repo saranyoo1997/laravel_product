@@ -46,6 +46,7 @@ class RegisterController extends Controller
         $register = new Register($validate);
         $register->save();
 
+        session()->flash('swal','Register Successfully');
        // dd($request,$validate);
         return redirect()->route('login');
         

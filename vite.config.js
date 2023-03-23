@@ -16,7 +16,7 @@ export default defineConfig({
             'resources/theme/vendor/chart.js/Chart.js',
             'resources/theme/js/demo/chart-area-demo.js',
             'resources/theme/js/demo/chart-pie-demo.js',
-    
+            'resources/js/sweetalert.js'
         ],
             refresh: true,
         }),
