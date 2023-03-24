@@ -1,41 +1,19 @@
 @extends('layout.index')
 
 @section('content')
-    <h1>category</h1>
-    
     <div class="card shadow mb-4">
-        <div class="card-header py-3">  
-           
-            {{-- <h4 class="m-0 font-weight-bold text-primary">Tables Category</h4>  --}}
-        <a href="{{ route('category.create') }}" class="btn btn-success float-right">New category</a>
+        <div class="card-header py-3">
+
+            <h4 class="m-0 font-weight-bold text-primary">Tables Category
+                <a href="{{ route('category.create') }}" class="btn btn-success float-right">New category</a>
+
+            </h4>
+
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-6">
-                            <div class="dataTables_length" id="dataTable_length">
-                                <label>Show 
-                                    <select name="dataTable_length"
-                                        aria-controls="dataTable"
-                                        class="custom-select custom-select-sm form-control form-control-sm">
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
-                                    </select> entries
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-6">
-                            <div id="dataTable_filter" class="dataTables_filter"> 
-                               
-                                {{-- <label>Search:
-                                    <input type="search"class="form-control form-control-sm" placeholder=""aria-controls="dataTable">
-                                </label> --}}
-                            </div>
-                        </div>
-                    </div>
+
 
                     <div class="row">
                         <div class="col-sm-12">
@@ -53,20 +31,47 @@
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                             colspan="1" aria-label="Office: activate to sort column ascending"
                                             style="width: 106px;">slug</th>
-                                
+
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Office: activate to sort column ascending"
+                                            style="width: 106px;">Menu</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
-
-
-                                    @foreach ($categories as $category)
+                                    @forelse ($categories as $category)
                                         <tr class="odd">
                                             <td class="sorting_1">{{ $category->id }}</td>
                                             <td>{{ $category->name }}</td>
                                             <td>{{ $category->slug }}</td>
+                                            <td class="text-right">
 
+                                                <form action="{{ route('category.destroy', ['category' => $category->id]) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('delete')
+
+                                                    <div class="btn-group">
+                                                        <a href="{{ route('category.edit', ['category' => $category->id]) }}"
+                                                            class="btn btn-warning">
+                                                            <i class="fa fa-pen mr-2"></i>edit
+                                                        </a>
+                                                        <button class="btn btn-danger " onclick="return confirm('delete')"
+                                                            type="submit">
+                                                            <i class="fa fa-trash mr-2"></i>delete
+                                                        </button>
+                                                    </div>
+                                                </form>
+
+                                            </td>
                                         </tr>
-                                    @endforeach
+                                    @empty
+                                        <tr>
+                                            <td colspan="4">no data</td>
+                                        </tr>
+                                    @endforelse
+
+
                                 </tbody>
                             </table>
                         </div>

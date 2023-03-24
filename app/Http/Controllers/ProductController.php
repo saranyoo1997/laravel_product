@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Register;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class RegisterController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,10 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        return view('member.register');
+        // $products = Product::where('id>0')->get();
+        $products = Product::all();
+        // dd($products);
+        return view('product.index',compact(['products']));
     }
 
     /**
@@ -24,7 +27,7 @@ class RegisterController extends Controller
      */
     public function create()
     {
-       
+        //
     }
 
     /**
@@ -35,46 +38,27 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-       
-   
-        $validate = $request->validate([
-            'name' => 'required|string|min:5',
-            'username' => 'required|string|min:5|unique:users,username',
-            'password' => 'required|string|min:3',
-
-        ]);
-        $validate['password'] = bcrypt($validate['password']);
-        $register = new Register($validate);
-        $register->save();
-
-        session()->flash('swal','Register Successfully');
-    //    dd($request,$validate);
-        return redirect()->route('login');
-  
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-     
-  
-        
-        
-        
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
         //
     }
@@ -83,21 +67,21 @@ class RegisterController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
         //
     }

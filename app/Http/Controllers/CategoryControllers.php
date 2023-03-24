@@ -30,14 +30,11 @@ class CategoryControllers extends Controller
         return view('category.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
+
+        // dd($request);
+
         $validate = $request->validate([
             'name' => 'required|string|min:3',
             'slug' => 'required|string|min:3|unique:category,slug',
@@ -45,53 +42,38 @@ class CategoryControllers extends Controller
         ]);
         $category = new Category($validate);
         $category->save();
-        return redirect()->route('category.index');
-     //   dd($request,$validate);
+        // return redirect()->route('category.index');
+       dd($request,$validate);
         
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view('category.edit',compact('category'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+        $category->name = $request->input('name');
+        $category->slug = $request->input('slug');
+        $category->update();
+        session()->flash('swal',"Update Success!");
+        return redirect()->route('category.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        // dd($id);
+        $category=Category::find($id)->delete();
+        session()->flash('swal',"Delete Success!");
+        return redirect()->route('category.index');
+        
     }
 }

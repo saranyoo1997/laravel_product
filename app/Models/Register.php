@@ -9,6 +9,7 @@ class Register extends Model
 {
     use HasFactory;
     protected $table = 'users';
+    public $timestamps = false; 
     protected $fillable = [
         'name',
         'username',
