@@ -29,7 +29,7 @@
                             <!-- Product image-->
                             {{-- <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
                                 alt="..." /> --}}
-                            <img class="card-img-top" src="https://picsum.photos/450/300" alt="..." />
+                            <img height="200px" class="card-img-top" src="{{ asset('/storage/image/products/' . $product->image) }}" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -49,7 +49,6 @@
                                     </button>
 
                                 </div>
-
 
                                 <!-- Modal -->
                                 <form action="{{ route('addcart', $product) }}" method="post">

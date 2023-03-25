@@ -7,13 +7,13 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <form action="{{ route('product.store') }}" method="post">
+                <form action="{{ route('product.store') }}" enctype="multipart/form-data" method="post">
                     @csrf
 
                     <div class="mb-3">
                         <label for="input-name" class="form-label">Input Name</label>
                         <input type="text" value="{{ old('name') }}"
-                            class="form-control @error('name')is-invalid @enderror" id="input-name"name='name'
+                            class="form-control @error('name')is-invalid @enderror" id="input-name" name='name'
                             placeholder="name">
 
                         @error('name')
@@ -25,7 +25,7 @@
                     <div class="mb-3">
                         <label for="input-slug" class="form-label">Input Slug</label>
                         <input type="text" value="{{ old('slug') }}"
-                            class="form-control @error('slug')is-invalid @enderror" id="input-slug"name='slug'
+                            class="form-control @error('slug')is-invalid @enderror" id="input-slug" name='slug'
                             placeholder="slug">
 
                         @error('slug')
@@ -68,7 +68,27 @@
 
                     </div>
 
+                    <div class="mb-3">
+                        <label for="input-image" class="form-label">Input image</label>
+                        <input type="file" 
+                            class="form-control @error('image')is-invalid @enderror" id="input-image" name='image'
+                            placeholder="image">
 
+                        @error('image')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+
+                    </div>
+
+                    {{-- <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" name="image" id="inputGroupFile01">
+                          <label class="custom-file-label" for="inputGroupFile01">Choose file Image</label>
+                        </div>
+                      </div> --}}
 
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

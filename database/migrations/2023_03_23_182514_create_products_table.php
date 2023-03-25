@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->foreignId('category_id')->constrained('category')->cascadeOnDelete()->cascadeOnUpdate();
             $table->float('price',5,2,true);
+            $table->string('image')->nullable();
             $table->timestamps();
         });
 

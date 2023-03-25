@@ -45,24 +45,29 @@
                                             style="width: 106px;">category</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                             colspan="1" aria-label="Office: activate to sort column ascending"
+                                            style="width: 106px;">image</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Office: activate to sort column ascending"
                                             style="width: 106px;">menu</th>
-
-
                                     </tr>
                                 </thead>
                                 <tbody>
 
-
                                     @forelse ($products as $product)
                                         <tr class="odd">
                                             <td class="sorting_1">{{ $product->id }}</td>
-                                            <td>{{ $product->name }} {{$product->price}}฿</td>
+                                            <td>{{ $product->name }} {{ $product->price }}฿</td>
                                             <td>{{ $product->slug }}</td>
                                             <td>{{ $product->category->name }}</td>
+                                            <td class="text-center">
+                                                <img height="100px"
+                                                    src="{{ asset('/storage/image/products/' . $product->image) }}"
+                                                    alt="">
+
+                                            </td>
                                             <td class="text-right">
 
-                                                <form action="{{ route('product.destroy', $product) }}"
-                                                    method="post">
+                                                <form action="{{ route('product.destroy', $product) }}" method="post">
                                                     @csrf
                                                     @method('delete')
 
@@ -80,7 +85,6 @@
 
 
                                             </td>
-
 
 
                                         </tr>
@@ -104,8 +108,9 @@
                                     <li class="paginate_button page-item previous disabled" id="dataTable_previous"><a
                                             href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0"
                                             class="page-link">Previous</a></li>
-                                    <li class="paginate_button page-item active"><a href="#" aria-controls="dataTable"
-                                            data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                    <li class="paginate_button page-item active"><a href="#"
+                                            aria-controls="dataTable" data-dt-idx="1" tabindex="0"
+                                            class="page-link">1</a></li>
                                     <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"
                                             data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
                                     <li class="paginate_button page-item "><a href="#" aria-controls="dataTable"

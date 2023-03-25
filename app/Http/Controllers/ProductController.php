@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Http\UploadedFile;
 
 class ProductController extends Controller
 {
@@ -28,6 +29,8 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        //  dd($request->toArray());
+
         $validate = $request->validate([
             'name' => 'required|string|min:3',
             'price' => 'required|numeric|min:0|max:1000',
@@ -35,7 +38,17 @@ class ProductController extends Controller
             'slug' => 'required|string|min:3|unique:products,slug',
         ]);
 
-        $product = new Product($validate);
+        $input=$request->all();
+        if($request->hasFile('image')){
+
+            $destinasion_path = 'public/image/products';
+            $image = $request->file('image');
+            $image_name = $image->getClientOriginalName();
+            $path = $request->file('image')->storeAs($destinasion_path,$image_name);
+            $input['image']=$image_name;
+          
+        }
+        $product = new Product($input);
         $product->save();
         session()->flash('swal', "Create Success!");
         return redirect()->route('product.index');
@@ -94,7 +107,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        dd($product);
+      
 
         $product->delete();
         session()->flash('swal',"Delete Success!");
