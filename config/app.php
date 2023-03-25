@@ -108,8 +108,9 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
-
+     'faker_locale' => 'en_US',
+    // 'faker_locale' => 'th_TH',
+    
     /*
     |--------------------------------------------------------------------------
     | Encryption Key

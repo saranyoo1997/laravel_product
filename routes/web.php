@@ -21,21 +21,23 @@ Route::get('/member', [MemberController::class, 'index']);
 
 
 Route::group(['middleware' => 'guest'], function () {
-    Route::get('/login', [loginController::class, 'index'])->name('login');
-    Route::post('/login', [loginController::class, 'post'])->name('login');
+    Route::get('login', [loginController::class, 'index'])->name('login');
+    Route::post('login', [loginController::class, 'post'])->name('login');
     Route::resource('/register', RegisterController::class);
 });
 Route::group(['middleware' => 'auth'], function () {
 
     
-    Route::get('/store', [StoreController::class, 'index'])->name('store');
+    Route::get('store', [StoreController::class, 'index'])->name('store');
+    Route::post('store/{product}', [StoreController::class, 'addcart'])->name('store');
+    Route::get('cart', [StoreController::class, 'cart'])->name('cart');
 
     Route::group(
         ['middleware' => 'adminlevel'],
         function () {
-            Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-            Route::resource('/category', CategoryControllers::class);
-            Route::resource('/product', ProductController::class);
+            Route::get('admin', [AdminController::class, 'index'])->name('admin');
+            Route::resource('category', CategoryControllers::class);
+            Route::resource('product', ProductController::class);
             
         }
 
