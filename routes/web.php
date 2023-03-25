@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 Route::get('/member', [MemberController::class, 'index']);
 
-Route::get('/store', [StoreController::class, 'index'])->name('store');
+
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/login', [loginController::class, 'index'])->name('login');
@@ -26,6 +26,10 @@ Route::group(['middleware' => 'guest'], function () {
     Route::resource('/register', RegisterController::class);
 });
 Route::group(['middleware' => 'auth'], function () {
+
+    
+    Route::get('/store', [StoreController::class, 'index'])->name('store');
+
     Route::group(
         ['middleware' => 'adminlevel'],
         function () {
