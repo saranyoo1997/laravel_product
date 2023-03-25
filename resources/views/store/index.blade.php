@@ -5,11 +5,17 @@
 
 @section('content')
     <!-- Header-->
-    <header class="bg-secondary py-5">
+    <header class="bg-secondary py-5"
+        style="
+        background: url('https://media.istockphoto.com/id/858610680/th/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2/%E0%B8%95%E0%B8%A5%E0%B8%B2%E0%B8%94%E0%B8%8A%E0%B9%89%E0%B8%AD%E0%B8%9B%E0%B8%9B%E0%B8%B4%E0%B9%89%E0%B8%87%E0%B8%9A%E0%B8%99%E0%B8%9E%E0%B8%B7%E0%B9%89%E0%B8%99%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B9%80%E0%B8%9A%E0%B8%A5%E0%B8%AD.jpg?s=612x612&w=0&k=20&c=_X7x9MhH1soylUTnrU2gTDr5N0CTaaoUZfn3Aro9aCA=');
+        background-blend-mode: multiply;
+">
         <div class="container px-4 px-lg-5 my-5">
-            <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">saranyoo</h1>
-                <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+            <div class="text-center text-white" style="text-shadow: 1px 1px 5px rgba(0,0,0,0.6);">
+                <h1 class="display-4 fw-bolder">Saranyoo</h1>
+                <p class="lead fw-normal text-white mb-0">
+                    Everyday is a fresh start. &mdash; ทุกวันคือการเริ่มต้นใหม่
+                </p>
             </div>
         </div>
     </header>
@@ -21,8 +27,9 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                                alt="..." />
+                            {{-- <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
+                                alt="..." /> --}}
+                            <img class="card-img-top" src="https://picsum.photos/450/300" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -45,7 +52,7 @@
 
 
                                 <!-- Modal -->
-                                <form action="{{route('store',$product)}}" method="post">
+                                <form action="{{ route('addcart', $product) }}" method="post">
                                     @csrf
 
                                     <div class="modal fade" id="{{ 'product_' . $product->id }}" data-bs-backdrop="static"
@@ -55,25 +62,26 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h1 class="modal-title fs-5" id="{{ 'product_' . $product->id }}Label">
-                                                            {{$product->name}}
-                                                        
+                                                        {{ $product->name }}
+
                                                     </h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
 
-                                                        <div class="row mb-2">
-                                                            <div class="col">Product Name</div>
-                                                            <div class="col">{{$product->name}}</div>
-                                                        </div>
+                                                    <div class="row mb-2">
+                                                        <div class="col">Product Name</div>
+                                                        <div class="col">{{ $product->name }}</div>
+                                                    </div>
 
-                                                        <div class="row mb-2">
-                                                            <div class="col">Product Price</div>
-                                                            <div class="col">{{$product->price}}</div>
-                                                        </div>
+                                                    <div class="row mb-2">
+                                                        <div class="col">Product Price</div>
+                                                        <div class="col">{{ $product->price }}</div>
+                                                    </div>
 
-                                                    <input class="form-control" type="number" name="number" min="1" max="1000" placeholder="Number of Product" value="1">
+                                                    <input class="form-control" type="number" name="number" min="1"
+                                                        max="1000" placeholder="Number of Product" value="1">
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
@@ -83,10 +91,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                
-                                
+
+
                                 </form>
-                              
+
                             </div>
                         </div>
                     </div>

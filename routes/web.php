@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('store');
 })->name('home');
 
 Route::get('/member', [MemberController::class, 'index']);
@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     
     Route::get('store', [StoreController::class, 'index'])->name('store');
-    Route::post('store/{product}', [StoreController::class, 'addcart'])->name('store');
+    Route::post('store/{product}', [StoreController::class, 'addcart'])->name('addcart');
     Route::get('cart', [StoreController::class, 'cart'])->name('cart');
 
     Route::group(
