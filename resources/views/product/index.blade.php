@@ -56,18 +56,18 @@
                                     @forelse ($products as $product)
                                         <tr class="odd">
                                             <td class="sorting_1">{{ $product->id }}</td>
-                                            <td>{{ $product->name }}</td>
+                                            <td>{{ $product->name }} {{$product->price}}฿</td>
                                             <td>{{ $product->slug }}</td>
                                             <td>{{ $product->category->name }}</td>
                                             <td class="text-right">
 
-                                                <form action="{{ route('product.destroy', ['product' => $product->id]) }}"
+                                                <form action="{{ route('product.destroy', $product) }}"
                                                     method="post">
                                                     @csrf
                                                     @method('delete')
 
                                                     <div class="btn-group">
-                                                        <a href="{{ route('product.edit', ['product' => $product->id]) }}"
+                                                        <a href="{{ route('product.edit', $product) }}"
                                                             class="btn btn-warning">
                                                             <i class="fa fa-pen mr-2"></i>edit
                                                         </a>

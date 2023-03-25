@@ -78,9 +78,12 @@ class ProductController extends Controller
                 'string',
                 'min:3',
                 // PS: เช็ค `slug` ซ้ำในตาราง `products` ข้ามการเช็คถ้าเป็น slug ของ product ตัวเดียวกัน
-                Rule::unique('product', 'slug')->ignore($product)
+                Rule::unique('products', 'slug')->ignore($product)
             ],
         ]);
+        $product->update($validate);
+        session()->flash('swal', "Update Success!");
+        return redirect()->route('product.index');
     }
 
     /**
@@ -91,6 +94,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        dd($product);
+
+        $product->delete();
+        session()->flash('swal',"Delete Success!");
+        return redirect()->route('category.index');
     }
 }
