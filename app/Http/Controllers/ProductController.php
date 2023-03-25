@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -23,20 +24,27 @@ class ProductController extends Controller
    
     public function create()
     {
-        return view('product.create');
+        $categories = Category::all();
+        return view('product.create',compact(['categories']));
     }
 
   
     public function store(Request $request)
     {
-        dd($request->toArray());
+        // dd($request->toArray());
 
-        // $validate = $request->validate([
-        //     'name' => 'required|string|min:3',
-        //     'price' => 'required|string|min:10',
-        //     'slug' => 'required|string|min:3|unique:product,slug',
-
-        // ]);
+        $validate = $request->validate([
+            'name' => 'required|string|min:3',
+            'price' => 'required|numeric|min:0|max:1000',
+            'category_id'=> 'required|exists:category,id',
+            'slug' => 'required|string|min:3|unique:products,slug',
+            
+        ]);
+        // dd($validate);
+        $product = new Product($validate);
+        $product->save();
+        session()->flash('swal',"Create Success!");
+        return redirect()->route('product.index');
         // $category = new Category($validate);
         // $category->save();
         // session()->flash('swal',"Create Success!");

@@ -42,7 +42,11 @@
                                             style="width: 106px;">slug</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                             colspan="1" aria-label="Office: activate to sort column ascending"
+                                            style="width: 106px;">category</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Office: activate to sort column ascending"
                                             style="width: 106px;">menu</th>
+
 
                                     </tr>
                                 </thead>
@@ -54,6 +58,7 @@
                                             <td class="sorting_1">{{ $product->id }}</td>
                                             <td>{{ $product->name }}</td>
                                             <td>{{ $product->slug }}</td>
+                                            <td>{{ $product->category->name }}</td>
                                             <td class="text-right">
 
                                                 <form action="{{ route('product.destroy', ['product' => $product->id]) }}"
@@ -75,6 +80,7 @@
 
 
                                             </td>
+
 
 
                                         </tr>
