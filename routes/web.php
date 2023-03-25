@@ -7,6 +7,7 @@ use App\Http\Controllers\loginController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,6 +17,8 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/member', [MemberController::class, 'index']);
+
+Route::get('/store', [StoreController::class, 'index'])->name('store');
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/login', [loginController::class, 'index'])->name('login');
