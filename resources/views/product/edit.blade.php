@@ -3,29 +3,74 @@
 @section('content')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Tables Product</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <form action="{{ route('category.update',['category' => $category->id]) }}" method="post">
+                <form action="{{ route('product.update', ['product' => $product->id]) }}" method="post">
                     @csrf
                     @method('put')
-                    
                     <div class="mb-3">
-                        <label for="input-name" id="name" class="form-label">Input Name</label>
-                        <input type="text" class="form-control" value="{{$category->name}}" id="input-name"name='name' placeholder="name">
-                    </div>
+                        <label for="input-name" class="form-label">Input Name</label>
+                        <input type="text" value="{{ old('name') ?? $product->name }}"
+                            class="form-control @error('name')is-invalid @enderror" id="input-name"name='name'
+                            placeholder="name">
 
-
-                    <div class="mb-3">
-                        <label for="input-slug" id="slug" class="form-label">Input slug</label>
-                        <input type="text" class="form-control" value="{{$category->slug}}" name="slug" id="input-slug" placeholder="slug">
-
-                      
+                        @error('name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
 
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <div class="mb-3">
+                        <label for="input-slug" class="form-label">Input Slug</label>
+                        <input type="text" value="{{ old('slug') ?? $product->slug }}"
+                            class="form-control @error('slug')is-invalid @enderror" id="input-slug"name='slug'
+                            placeholder="slug">
+
+                        @error('slug')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="input-category" class="form-label">Input Category</label>
+
+                        <select class="form-control @error('category_id')is-invalid @enderror" name="category_id">
+
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" @selected(old('category_id') == $category->id or old('category_id') == null and $product->category_id == $category->id)>
+                                    {{ $category->name }}
+
+
+                                </option>
+                            @endforeach
+
+
+                        </select>
+
+                        @error('category_id')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="input-price" class="form-label">Input Price</label>
+                        <input type="text" value="{{ old('price') ?? $product->price }}"
+                            class="form-control @error('price')is-invalid @enderror" id="input-price" name='price'
+                            placeholder="price">
+
+                        @error('price')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+
+                    </div>
+
+
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>

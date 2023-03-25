@@ -38,7 +38,7 @@ class ProductController extends Controller
             'price' => 'required|numeric|min:0|max:1000',
             'category_id'=> 'required|exists:category,id',
             'slug' => 'required|string|min:3|unique:products,slug',
-            
+
         ]);
         // dd($validate);
         $product = new Product($validate);
@@ -65,7 +65,11 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+
+        $categories = Category::all();
+        return view('product.edit',compact(['product','categories']));
+
+
     }
 
     /**
@@ -77,7 +81,16 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+
+       $validate = $request->validate([
+            'name' => 'required|string|min:3',
+            'price' => 'required|numeric|min:0|max:1000',
+            'category_id'=> 'required|exists:category,id',
+            'slug' => 'required|string|min:3',
+
+        ]);
+
+
     }
 
     /**
