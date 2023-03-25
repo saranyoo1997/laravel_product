@@ -75,7 +75,8 @@ class ProductController extends Controller
             'category_id' => 'required|exists:category,id',
             'slug' => [
                 'required',
-                'string|min:3',
+                'string',
+                'min:3',
                 // PS: เช็ค `slug` ซ้ำในตาราง `products` ข้ามการเช็คถ้าเป็น slug ของ product ตัวเดียวกัน
                 Rule::unique('product', 'slug')->ignore($product)
             ],
