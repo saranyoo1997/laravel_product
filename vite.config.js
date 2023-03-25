@@ -16,7 +16,12 @@ export default defineConfig({
             'resources/theme_be/vendor/chart.js/Chart.js',
             'resources/theme_be/js/demo/chart-area-demo.js',
             'resources/theme_be/js/demo/chart-pie-demo.js',
-            'resources/js/sweetalert.js'
+            'resources/js/sweetalert.js',
+
+            //front
+            'resources/theme_fe/css/styles.css',
+            'resources/theme_fe/js/scripts.js'
+
         ],
             refresh: true,
         }),
