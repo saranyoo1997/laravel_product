@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryControllers;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,5 +25,6 @@ Route::group(['middleware'=>'auth'],function(){
     // 
     Route::get('/admin',[AdminController::class,'index'])->name('admin');
     Route::resource('/category',CategoryControllers::class);
+    Route::resource('/product',ProductController::class);
     Route::delete('logout',[loginController::class,'logout'])->name('logout');
 });

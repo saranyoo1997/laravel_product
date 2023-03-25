@@ -54,7 +54,7 @@
 
             </li>
 
-            
+
             <i class="fa-solid fa-shop"></i>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#category"
@@ -67,7 +67,7 @@
                         <h6 class="collapse-header">Category</h6>
                         <a class="collapse-item" href="{{ route('category.index') }}">Index</a>
                         <a class="collapse-item" href="{{ route('category.create') }}">Create</a>
-                       
+
                     </div>
                 </div>
             </li>
@@ -89,9 +89,9 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
+                        <h6 class="collapse-header">Product</h6>
+                        <a class="collapse-item" href="{{ route('product.index') }}">Index</a>
+                        <a class="collapse-item" href="{{ route('product.create') }}">Create</a>
                     </div>
                 </div>
             </li>
@@ -312,7 +312,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">User</span>
                                 <img class="img-profile rounded-circle"
                                     src="{{ asset('theme/img/undraw_profile.svg') }}">
                             </a>
@@ -392,7 +392,11 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{ route('login') }}">Logout</a>
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-primary">Logout</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -408,8 +412,7 @@
     <script src="js/demo/chart-pie-demo.js"></script> --}}
     @vite(['resources/theme/vendor/jquery/jquery.js', 'resources/theme/vendor/bootstrap/js/bootstrap.bundle.js', 'resources/theme/vendor/jquery-easing/jquery.easing.js', 'resources/theme/js/sb-admin-2.js', 'resources/theme/vendor/chart.js/Chart.js', 'resources/theme/js/demo/chart-area-demo.js', 'resources/theme/js/demo/chart-pie-demo.js', 'resources/js/sweetalert.js'])
     @if (session()->has('swal'))
-    
-    <script type="module">
+        <script type="module">
         $(function(){
             Swal.fire({
                 icon: 'success',
@@ -418,8 +421,7 @@
             })
         })
     </script>
-
-@endif
+    @endif
 </body>
 
 </html>

@@ -3,12 +3,15 @@
 @section('content')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h4 class="m-0 font-weight-bold text-primary">Tables User</h4>
+            <h4 class="m-0 font-weight-bold text-primary">Tables User
+                <a href="#" class="btn btn-success float-right">New User</a>
+
+            </h4>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                  
+
                     <div class="row">
                         <div class="col-sm-12">
                             <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0"
@@ -24,24 +27,47 @@
                                             style="width: 232px;">name</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                             colspan="1" aria-label="Office: activate to sort column ascending"
-                                            style="width: 106px;">usermae</th>
-                                       
+                                            style="width: 106px;">username</th>
+
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Office: activate to sort column ascending"
+                                            style="width: 106px;">Menu</th>
 
                                     </tr>
                                 </thead>
 
                                 <tbody>
 
-
                                     @foreach ($users as $user)
                                         <tr class="odd">
                                             <td class="sorting_1">{{ $user->id }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->username }}</td>
-                                           
+                                            <td class="text-right">
+                                                {{-- <form action="{{ route('category.destroy', ['category' => $category->id]) }}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+
+                                                    <div class="btn-group">
+                                                        <a href="{{ route('category.edit', ['category' => $category->id]) }}" class="btn btn-warning">
+                                                            <i class="fa fa-pen mr-2"></i>edit
+                                                        </a>
+                                                        <button class="btn btn-danger " onclick="return confirm('delete')"
+                                                            type="submit">
+                                                            <i class="fa fa-trash mr-2"></i>delete
+                                                        </button>
+                                                    </div>
+                                                </form> --}}
+                                            </td>
                                         </tr>
                                     @endforeach
+
+
+
+
+
                                 </tbody>
+
                             </table>
                         </div>
                     </div>

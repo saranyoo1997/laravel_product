@@ -28,12 +28,12 @@ class CategoryControllers extends Controller
     public function create()
     {
         return view('category.create');
+
     }
 
     public function store(Request $request)
     {
 
-        // dd($request);
 
         $validate = $request->validate([
             'name' => 'required|string|min:3',
@@ -42,8 +42,9 @@ class CategoryControllers extends Controller
         ]);
         $category = new Category($validate);
         $category->save();
-        // return redirect()->route('category.index');
-       dd($request,$validate);
+        session()->flash('swal',"Create Success!");
+         return redirect()->route('category.index');
+       
         
     }
 
