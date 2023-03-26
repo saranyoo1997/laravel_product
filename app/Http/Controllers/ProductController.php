@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\TempImage;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use Illuminate\Http\UploadedFile;
+
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -29,7 +31,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        //  dd($request->toArray());
+        //   dd($request->toArray());
 
         $validate = $request->validate([
             'name' => 'required|string|min:3',
@@ -38,18 +40,32 @@ class ProductController extends Controller
             'slug' => 'required|string|min:3|unique:products,slug',
         ]);
 
-        $input=$request->all();
-        if($request->hasFile('image')){
+        $input = $request->all();
+        // if($request->hasFile('image')){
 
-            $destinasion_path = 'public/image/products';
-            $image = $request->file('image');
-            $image_name = $image->getClientOriginalName();
-            $path = $request->file('image')->storeAs($destinasion_path,$image_name);
-            $input['image']=$image_name;
-          
-        }
+        //     $destinasion_path = 'public/image/products';
+        //     $image = $request->file('image');
+        //     $image_name = uniqid().'.'.$image->getClientOriginalExtension();
+        //     // $image_name = $image->getClientOriginalName();
+        //     $path = $request->file('image')->storeAs($destinasion_path,$image_name);
+        //     $input['image']=$image_name;
+
+        // }
         $product = new Product($input);
         $product->save();
+        $origin = $request->ip();
+        $temp = TempImage::where('origin', $origin)->get();
+
+        foreach ($temp as $tmp) {
+            if ($product->image !== $tmp->name) {
+                // unlink("{$tmp->path}/{$tmp->name}");
+                if (Storage::exists("{$tmp->path}/{$tmp->name}")) {
+                    Storage::delete("{$tmp->path}/{$tmp->name}");
+                } 
+            }
+
+            $tmp->delete();
+        }
         session()->flash('swal', "Create Success!");
         return redirect()->route('product.index');
     }
@@ -107,10 +123,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-      
+
 
         $product->delete();
-        session()->flash('swal',"Delete Success!");
+        session()->flash('swal', "Delete Success!");
         return redirect()->route('category.index');
     }
 }

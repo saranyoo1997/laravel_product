@@ -20,7 +20,10 @@ export default defineConfig({
 
             //front
             'resources/theme_fe/css/styles.css',
-            'resources/theme_fe/js/scripts.js'
+            'resources/theme_fe/js/scripts.js',
+
+            // filepond
+            'resources/js/filepond.js'
 
         ],
             refresh: true,

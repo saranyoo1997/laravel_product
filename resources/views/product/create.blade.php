@@ -68,11 +68,14 @@
 
                     </div>
 
-                    <div class="mb-3">
-                        <label for="input-image" class="form-label">Input image</label>
-                        <input type="file" 
+                    <div class="mb-3 row">
+                        <label   for="input-image" class="form-label col-12">Input image</label>
+                        <input  class="filepond col-12 col-md-6" type="file" name="image" id="image">
+
+
+                        {{-- <input type="file" 
                             class="form-control @error('image')is-invalid @enderror" id="input-image" name='image'
-                            placeholder="image">
+                            placeholder="image"> --}}
 
                         @error('image')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -95,4 +98,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('style')
+    @vite('resources/js/filepond.js')
 @endsection

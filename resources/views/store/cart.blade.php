@@ -31,7 +31,7 @@
                         <td>{{ $cart->product->name }}</td>
                         <td>{{ $cart->product->price }}</td>
                         <td>{{ $cart->number }}</td>
-                        <td>{{ $total }}</td>
+                        <td>{{ $total }} ฿</td>
                     </tr>
                 @endforeach
 
@@ -39,7 +39,7 @@
             <tfoot>
                 <tr>
                     <th class="table-secondary" colspan="3">Sum Total</th>
-                    <td class="table-danger">{{$sumTotal}}</td>
+                    <td class="table-danger">{{$sumTotal}} ฿</td>
                 </tr>
             </tfoot>
         </table>
