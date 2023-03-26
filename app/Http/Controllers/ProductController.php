@@ -123,10 +123,12 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-
+        if (Storage::exists("public/image/products/{$product->image}")) {
+            Storage::delete("public/image/products/{$product->image}");
+        } 
 
         $product->delete();
         session()->flash('swal', "Delete Success!");
-        return redirect()->route('category.index');
+        return redirect()->route('product.index');
     }
 }
