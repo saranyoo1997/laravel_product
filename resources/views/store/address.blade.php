@@ -6,12 +6,9 @@
     $verticalMenuJson = file_get_contents(base_path('resources/json/thai_provinces.json'));
     $data = json_decode($verticalMenuJson);
 
-     foreach ($data as $province) {
-        foreach ($province as $key => $value) {
-            echo "$key- $value </br>";
-        }
-     }
-   
+    foreach($data['RECORDS'] as $record) {
+        echo $record['name_th'];
+    }
    
 @endphp
 
