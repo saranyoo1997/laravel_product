@@ -6,10 +6,10 @@
     $verticalMenuJson = file_get_contents(base_path('resources/json/thai_provinces.json'));
     $data = json_decode($verticalMenuJson);
 
-    foreach($data['RECORDS'] as $record) {
+    foreach($data[0]['RECORDS'] as $record) {
         echo $record['name_th'];
     }
-   
+
 @endphp
 
 
@@ -31,7 +31,7 @@
                                 @csrf
                                 <div class="form-group mb-4">
                                     <input type="text" name="name" value="{{ old('name') }}" class="form-control form-control-user"
-                                   
+
                                         placeholder="Enter name...">
                                 </div>
                                 <div class="form-group mb-4">
@@ -56,7 +56,7 @@
                                         <option value="audi">Audi</option>
                                       </select>
                                 </div>
-                        
+
                                 <div class="form-group mb-4">
                                     <select name="tambon" id="tambon" class="form-control form-control-user" >
                                         <option value="volvo">Volvo</option>
@@ -65,16 +65,16 @@
                                         <option value="audi">Audi</option>
                                       </select>
                                 </div>
-                                
+
                                 <button type="submit" class="btn btn-primary btn-user btn-block">
                                     Login
                                 </button>
 
-                             
-                    
+
+
 
                             </form>
-                       
+
                         </div>
                     </div>
                 </div>
@@ -99,5 +99,5 @@
 
 
 
-   
+
 @endsection
