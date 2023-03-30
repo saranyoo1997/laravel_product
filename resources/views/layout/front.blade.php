@@ -75,8 +75,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     {{-- <script src="js/scripts.js"></script> --}}
-    @vite('resources/theme_fe/js/scripts.js')
-
+    @vite(['resources/theme_fe/js/scripts.js','resources/theme_be/vendor/jquery/jquery.js'])
+    @yield('script')
 
 </body>
 

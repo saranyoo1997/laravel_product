@@ -23,7 +23,9 @@ export default defineConfig({
             'resources/theme_fe/js/scripts.js',
 
             // filepond
-            'resources/js/filepond.js'
+            'resources/js/filepond.js',
+            //
+            'resources/js/selectaddress.js'
 
         ],
             refresh: true,
