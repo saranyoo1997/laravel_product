@@ -44,4 +44,24 @@ class StoreController extends Controller
 
     }
 
+    public function address()
+    {
+
+        // $verticalMenuJson = file_get_contents(base_path('resources\json'));
+        // $verticalMenuData = json_decode($verticalMenuJson);
+
+        
+        return view('store.address');
+
+
+       
+        
+    }
+    // public function detail(){
+    //     $verticalMenuJson = file_get_contents(base_path('resources\json'));
+    //     $verticalMenuData = json_decode($verticalMenuJson);
+
+
+    // }
+
 }

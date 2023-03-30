@@ -33,6 +33,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('store', [StoreController::class, 'index'])->name('store');
     Route::post('store/{product}', [StoreController::class, 'addcart'])->name('addcart');
     Route::get('cart', [StoreController::class, 'cart'])->name('cart');
+    Route::get('address', [StoreController::class, 'address'])->name('address');
+
 
     Route::group(
         ['middleware' => 'adminlevel'],

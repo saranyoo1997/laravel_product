@@ -40,10 +40,11 @@
                 <tr>
                     <th class="table-secondary" colspan="3">Sum Total</th>
                     <td class="table-danger">{{$sumTotal}} ฿</td>
+                      
                 </tr>
             </tfoot>
         </table>
-
+        <a href="{{route('address')}}" class="btn btn-success">Confirm Order</a>
 
 
     </div>
