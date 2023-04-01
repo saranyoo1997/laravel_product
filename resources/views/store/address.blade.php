@@ -35,14 +35,14 @@
                                     <h1 class="h4 text-gray-900 mb-4">Address Details</h1>
                                 </div>
 
-                                <form action="" method="post" class="user">
+                                <form action="{{route('storeAddress')}}" method="post" class="user">
                                     @csrf
                                     <div class="form-group mb-4">
                                         <input type="text" name="name" value="{{ old('name') }}"
                                             class="form-control form-control-user" placeholder="ชื่อ-นามสกุล">
                                     </div>
                                     <div class="form-group mb-4">
-                                        <input type="number" name="tel" min="10" max="10" value="{{ old('tel') }}"
+                                        <input type="number" name="tel" value="{{ old('tel') }}"
                                             class="form-control form-control-user" placeholder="หมายเลขโทรศัพท์">
                                     </div>
 
@@ -58,14 +58,14 @@
 
 
                                     <div class="form-group mb-4">
-                                        <select name="amphur" id="amphur" class="form-control form-control-user">
+                                        <select name="amphur" id="amphur" class="form-select form-control-user">
                                             <option value="">อำเภอ</option>
 
                                         </select>
                                     </div>
 
                                     <div class="form-group mb-4">
-                                        <select name="tambon" id="tambon" class="form-control form-control-user">
+                                        <select name="tambon" id="tambon" class="form-select form-control-user">
                                             <option value="">ตำบล</option>
 
                                         </select>

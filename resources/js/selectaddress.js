@@ -1,4 +1,3 @@
-import { zip } from 'lodash';
 import amphurs from '../json/thai_amphures.json'
 import tambons from '../json/thai_tambons.json'
 document.addEventListener('DOMContentLoaded', function () {
@@ -26,6 +25,8 @@ document.addEventListener('DOMContentLoaded', function () {
         arr.forEach(tambon=>{
             $('#tambon').append(`<option value="${tambon.id}">${tambon.name_th}</option>`)
         })
+        
+
     });
 
     

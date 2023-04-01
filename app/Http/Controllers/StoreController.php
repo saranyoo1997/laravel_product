@@ -46,22 +46,33 @@ class StoreController extends Controller
 
     public function address()
     {
-
-        // $verticalMenuJson = file_get_contents(base_path('resources\json'));
-        // $verticalMenuData = json_decode($verticalMenuJson);
-
-        
         return view('store.address');
-
-
-       
-        
     }
-    // public function detail(){
-    //     $verticalMenuJson = file_get_contents(base_path('resources\json'));
-    //     $verticalMenuData = json_decode($verticalMenuJson);
+
+    public function storeAddress(Request $request)
+    {
+       dd($request);
+
+       $validates = $request->validate([
+        'user_id' =>'required|exists:users,id',
+        'product_id'=>'required|exists:products,id',
+        'number'=>'required|numeric|min:0|max:1000',
 
 
-    // }
+        
+    ]);
+
+
+    }
+    public function detail()
+    {
+       
+
+    }
+
+    
+    
+
+ 
 
 }

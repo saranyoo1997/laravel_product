@@ -34,7 +34,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('store/{product}', [StoreController::class, 'addcart'])->name('addcart');
     Route::get('cart', [StoreController::class, 'cart'])->name('cart');
     Route::get('address', [StoreController::class, 'address'])->name('address');
-
+    Route::post('address',[StoreController::class,'storeAddress'])->name('storeAddress');
+  
 
     Route::group(
         ['middleware' => 'adminlevel'],
