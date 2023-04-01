@@ -16,12 +16,14 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->string('address');
+            $table->string('tel');
             $table->integer('total');
             $table->integer('province_id');
             $table->integer('amphur_id');
-            $table->integer('tumbon_id');
+            $table->integer('tambon_id');
             $table->integer('zipcode');
+            $table->string('name');
+            
 
         });
     }

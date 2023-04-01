@@ -11,12 +11,13 @@ class Order extends Model
     public $timestamps = true; 
     protected $fillable = [
         'user_id',
-        'address',
+        'tel',
         'total',
         'province_id',
         'amphur_id',
         'tumbol_id',
         'zidcode',
+        'name',
       
     ];
 }

@@ -47,10 +47,10 @@
                                     </div>
 
                                     <div class="form-group mb-4">
-                                        <select name="province" id="province" class="form-select form-select-user">
+                                        <select name="province_id" id="province" class="form-select form-select-user">
                                             <option value='' selected disabled>จังหวัด</option>
                                             @foreach ($provinces as $record)
-                                                <option value="{{ $record->id }}">{{ $record->name_th}}</option>
+                                                <option value="{{ $record->id }}" @selected($record->id==old('province_id'))>{{ $record->name_th}}</option>
                                             @endforeach
 
                                         </select>
@@ -58,24 +58,27 @@
 
 
                                     <div class="form-group mb-4">
-                                        <select name="amphur" id="amphur" class="form-select form-control-user">
+                                        <select name="amphur_id" id="amphur"  class="form-select form-control-user">
                                             <option value="">อำเภอ</option>
 
                                         </select>
                                     </div>
 
                                     <div class="form-group mb-4">
-                                        <select name="tambon" id="tambon" class="form-select form-control-user">
+                                        <select name="tambon_id" id="tambon" class="form-select form-control-user">
                                             <option value="">ตำบล</option>
 
                                         </select>
                                     </div>
 
                                     <div class="form-group mb-4">
-                                        <select name="zip" id="zip" class="form-control form-control-user">
-                                            <option value="">รหัสไปรษณีย์</option>
+                                        <input name="zipcode" id="zip" placeholder="รหัสไปรษณีย์" class="form-control form-control-user">
+                                     
+                                    </div>
 
-                                        </select>
+                                    <div class="form-group mb-4">
+                                        <input name="name" id="name" placeholder="ชื่อผู่รับ" class="form-control form-control-user">
+                                     
                                     </div>
 
                                     <button type="submit" class="btn btn-primary btn-user btn-block">

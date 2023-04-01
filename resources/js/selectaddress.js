@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
             return r.province_id == $(this).val()
         });
         $('#amphur').html('');
+        $('#amphur').append(`<option selected disabled >อำเภอ</option>`)
+
         arr.forEach(amphur=>{
             $('#amphur').append(`<option value="${amphur.id}">${amphur.name_th}</option>`)
 
@@ -22,12 +24,21 @@ document.addEventListener('DOMContentLoaded', function () {
             return r.amphure_id == $(this).val()
         });
         $('#tambon').html('');
+        $('#tambon').append(`<option selected disabled >ตำบล</option>`)
         arr.forEach(tambon=>{
             $('#tambon').append(`<option value="${tambon.id}">${tambon.name_th}</option>`)
         })
-        
+    
+
 
     });
+
+    $('#tambon').on('change',function(){
+
+        const zip_code = tambons.RECORDS.find(tambon=>tambon.id==$(this).val())
+        $('#zip').val(zip_code.zip_code);
+        // console.log(zip_code,$(this).val());
+    })
 
     
 
